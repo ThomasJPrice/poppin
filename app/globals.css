@@ -2,20 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
 
-@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 50 100% 97%; /* Light butter yellow */
+    --foreground: 0 0% 20%; /* Dark grey for text */
+    --card: 50 100% 95%; /* Subtle butter yellow */
+    --card-foreground: 0 0% 20%; /* Dark grey */
+    --popover: 50 100% 97%; /* Same as background */
+    --popover-foreground: 0 0% 20%; /* Dark grey */
+    --primary: 50 95% 60%; /* Butter yellow */
+    --primary-foreground: 0 0% 0%; /* Black for high contrast */
+    --secondary: 0 85% 65%; /* Crisp red */
+    --secondary-foreground: 0 0% 100%; /* White for contrast */
+    --muted: 50 30% 90%; /* Muted yellow */
+    --muted-foreground: 0 0% 25%; /* Dark muted grey */
+    --accent: 0 85% 65%; /* Crisp red (matches secondary) */
+    --accent-foreground: 0 0% 100%; /* White for contrast */
+    --destructive: 0 100% 55%; /* Bright red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 0 0% 20%; /* Light grey for subtle borders */
+    --input: 0 0% 95%; /* Very light grey for input backgrounds */
+    --ring: 50 95% 60%; /* Butter yellow for focus rings */
+    --radius: 0.3rem; /* Subtle rounded corners */
   }
+  
+
+  .dark {
+    --background: 45 50% 5%;
+    --foreground: 45 5% 90%;
+    --card: 45 50% 0%;
+    --card-foreground: 45 5% 90%;
+    --popover: 45 50% 5%;
+    --popover-foreground: 45 5% 90%;
+    --primary: 45 100% 70%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 45 30% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 7 30% 15%;
+    --muted-foreground: 45 5% 60%;
+    --accent: 7 30% 15%;
+    --accent-foreground: 45 5% 90%;
+    --destructive: 0 100% 30%;
+    --destructive-foreground: 45 5% 90%;
+    --border: 45 30% 18%;
+    --input: 45 30% 18%;
+    --ring: 45 100% 70%;
+    --radius: 0.5rem;
+  }
+
+
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .container {
+    @apply !max-w-[1400px] !px-4 !mx-auto
+  }
 }
