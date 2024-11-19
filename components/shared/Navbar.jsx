@@ -1,7 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "../ui/button"
-import { Github } from "lucide-react"
 
 const Navbar = () => {
   return (
@@ -13,7 +12,7 @@ const Navbar = () => {
       </div>
 
       <div>
-        <Link href='https://github.com' target="_blank">
+        <Link href='https://github.com/ThomasJPrice/poppin' target="_blank">
           <Button variant='outline'>
             GitHub
           </Button>
