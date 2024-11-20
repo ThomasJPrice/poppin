@@ -4,9 +4,10 @@ import Image from "next/image"
 import { useState } from "react"
 import SearchFilters from "./SearchFilters"
 import { searchEvents } from "@/utils/server"
+import EventCard from "./EventCard"
 
 const EventSearch = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [events, setEvents] = useState(false)
 
   const [filters, setFilters] = useState({
@@ -19,11 +20,13 @@ const EventSearch = () => {
   async function handleSearch() {
     setIsLoading(true)
 
-    await searchEvents(filters)
+    const res = await searchEvents(filters)
+
+    setEvents(res)
 
     setIsLoading(false)
   }
-  
+
 
   return (
     <section id="search" className="w-full">
@@ -36,7 +39,13 @@ const EventSearch = () => {
           </div>
         ) : (
           <>
-            <div>results</div>
+            {events ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                {events.map((event, index) => (
+                <EventCard event={event} key={event + index} />
+                ))}
+              </div>
+            ) : <p className="text-center">Looks like there are no events!</p>}
           </>
         )}
       </div>

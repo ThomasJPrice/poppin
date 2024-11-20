@@ -6,22 +6,6 @@ import { Input } from "../ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import toast from "react-hot-toast"
 
-// move to main file
-const LOCATIONS = {
-  'new-york': {
-    lat: 74.0060,
-    long: 40.7128
-  },
-  'los-angeles': {
-    lat: 118.2426,
-    long: 34.0549
-  },
-  'london': {
-    long: 0.1276,
-    lat: 51.5072
-  }
-}
-
 const SearchFilters = ({ filters, setFilters, handleSearch }) => {
   function handleSearchChange(e) {
     setFilters({
