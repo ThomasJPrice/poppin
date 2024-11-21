@@ -36,7 +36,7 @@ export function checkStarred(id) {
   if (typeof window !== undefined) {
     const starred = localStorage.getItem('starred')?.split(',')
 
-    if (starred.includes(id)) {
+    if (starred?.includes(id)) {
       return true
     }
 
@@ -52,4 +52,22 @@ export function addStarred(id) {
 
     localStorage.setItem('starred', starred.join(','))
   }
+}
+
+export function removeStarred(id) {
+  if (typeof window !== undefined) {
+    var starred = localStorage.getItem('starred')?.split(',') || []
+
+    starred = starred.filter((item) => item !== id)
+
+    localStorage.setItem('starred', starred.join(','))
+  }
+}
+
+export function getStarred() {
+  if (typeof window !== undefined) {
+    var starred = localStorage.getItem('starred')?.split(',') || []
+
+    return starred
+   }
 }

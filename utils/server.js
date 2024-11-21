@@ -14,11 +14,11 @@ export async function searchEvents(filters) {
   }
 
   const data = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?page=0&size=20&apikey=${process.env.TICKETMASTER_API_KEY}&keyword=${filters.search}&geoPoint=${geopoint}`)
-  
+
   const events = await data.json()
 
   if (events.page.totalElements === 0) return null
-  
+
   return events?._embedded.events
 }
 
@@ -30,4 +30,19 @@ export async function getEventDetails(id) {
   const eventDetails = await data.json()
 
   return eventDetails
+}
+
+export async function populateStarred(ids) {
+  const res = await Promise.all(
+    ids.map(async (id) => {
+      const data = await fetch(
+        `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${process.env.TICKETMASTER_API_KEY}`
+      );
+      return await data.json();
+    })
+  );
+
+  console.log(res);
+
+  return res; // Return the populated events array
 }

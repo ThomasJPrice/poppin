@@ -11,7 +11,11 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div>
+      <div className="flex flex-row items-center gap-8">
+        <Link href='/starred' className="text-sm text-secondary hover:underline">
+          My Events
+        </Link>
+
         <Link href='https://github.com/ThomasJPrice/poppin' target="_blank">
           <Button variant='outline'>
             GitHub
