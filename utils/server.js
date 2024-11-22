@@ -42,7 +42,5 @@ export async function populateStarred(ids) {
     })
   );
 
-  console.log(res);
-
   return res; // Return the populated events array
 }

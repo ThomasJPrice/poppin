@@ -12,9 +12,6 @@ const EventDetails = async (props) => {
 
   const eventDetails = await getEventDetails(params.id)
 
-  console.log(eventDetails);
-
-
   return (
     <main className="container grid grid-cols-1 lg:grid-cols-3 gap-8">
       {/* left side */}

@@ -20,19 +20,21 @@ const VenueDetails = ({ venue }) => {
       <div>
         <h3 className="mb-2 text-lg underline">Location</h3>
         <p>
-          {address.line1}, {address.line2 && `${address.line2},`} {city.name}, {country.name}, {postalCode}
+          {address?.line1}, {address?.line2 && `${address.line2},`} {city?.name}, {country?.name}, {postalCode}
         </p>
       </div>
 
       {/* Accessibility Details */}
-      <div>
-        <h3 className="mb-2 text-lg underline">Accessibility</h3>
-        <p>{accessibleSeatingDetail}</p>
-        {ada && <p>
-          For more information on accessible seating and booking assistance, call:{" "}
-          <strong>{ada.adaPhones}</strong>
-        </p>}
-      </div>
+      {accessibleSeatingDetail && (
+        <div>
+          <h3 className="mb-2 text-lg underline">Accessibility</h3>
+          <p>{accessibleSeatingDetail}</p>
+          {ada && <p>
+            For more information on accessible seating and booking assistance, call:{" "}
+            <strong>{ada.adaPhones}</strong>
+          </p>}
+        </div>
+      )}
 
       {/* Parking Information */}
       {parkingDetail && <div>
@@ -42,7 +44,7 @@ const VenueDetails = ({ venue }) => {
 
       <div>
         <iframe
-          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API_KEY}&q=${location.latitude},${location.longitude}`}
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.GOOGLE_MAPS_API_KEY}&q=${location?.latitude},${location?.longitude}`}
           width="100%"
           height="400"
           style={{ border: 0 }}
